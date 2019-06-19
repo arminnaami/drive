@@ -25,10 +25,12 @@
         </v-flex>
         <v-flex xs12 class="form-wrapper">
           <v-text-field
+            v-model="username"
             box
             full-width
             single-line
             label="Username"
+            :rules="usernameRules"
             background-color="#dcdada"
             color="grey darken-2"
             outline
@@ -36,9 +38,11 @@
             mb-0
           ></v-text-field>
           <v-text-field
-            v-show="signup"
+            v-model="name"
             box
+            v-show="signup"
             full-width
+            :rules="nameRules"
             single-line
             label="Name"
             background-color="#dcdada"
@@ -48,11 +52,13 @@
             mb-0
           ></v-text-field>
           <v-text-field
+            v-model="email"
             box
             full-width
             v-show="signup"
             single-line
             label="Email"
+            :rules="emailRules"
             autocomplete="false"
             background-color="#dcdada"
             color="grey darken-2"
@@ -61,17 +67,18 @@
           ></v-text-field>
           <v-text-field
             v-model="password"
-            :append-icon="show1 ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"
-            :type="show1 ? 'text' : 'password'"
+            :append-icon="eye ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"
+            :type="eye ? 'text' : 'password'"
             box
             full-width
             single-line
+            :rules="passwordRules"
             label="Password"
             background-color="#dcdada"
             color="grey darken-2"
             outline
             prepend-inner-icon="mdi-lock-outline"
-            @click:append="show1 = !show1"
+            @click:append="eye = !eye"
           ></v-text-field>
           <v-btn
             v-show="!signup"
@@ -79,6 +86,7 @@
             large
             dark
             depressed
+            @click="login"
             ripple
             color="#1ed760"
             class="sign-up"
@@ -88,6 +96,7 @@
             round
             large
             dark
+            @click="createAccount"
             depressed
             ripple
             color="#1ed760"
@@ -111,17 +120,22 @@ export default {
   name: "media-login",
   data() {
     return {
+      name: "",
+      username: "",
+      email: "",
+      password: "",
       signup: true,
       valid: false,
-      e1: false,
       show: true,
-      password: "",
-      show1: false,
-      isSwitch: false,
+      eye: false,
       loading: false,
-      passwordRules: [v => !!v || "Password is required"],
-      email: "",
       /* eslint-disable */
+      usernameRules: [v => !!v || "Username is required."],
+      passwordRules: [v => !!v || "Password is required"],
+      nameRules: [
+        v => !!v || "Name is required.",
+        v => /^[a-zA-Z ]*$/.test(v) || "Name must be valid."
+      ],
       emailRules: [
         v => !!v || "E-mail is required",
         v =>
@@ -132,23 +146,37 @@ export default {
     };
   },
   methods: {
-    submit() {
-      if (this.$refs.form.validate()) {
-        const data = {
-          email: this.email,
-          password: this.password
-        };
-        this.loading = true;
-        this.$store
-          .dispatch("login", data)
-          .then(result => {
-            this.finalize(result);
-          })
-          .catch(err => {
-            this.loading = false;
-            api._handleError(err);
-          });
-      }
+    createAccount() {
+      const data = {
+        name: this.name,
+        email: this.email,
+        password: this.password
+      };
+
+      this.$store
+        .dispatch("signup", data)
+        .then(() => {
+          this.clear();
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    login() {
+      const data = {
+        email: this.email,
+        password: this.password
+      };
+      this.loading = true;
+      this.$store
+        .dispatch("login", data)
+        .then(result => {
+          this.finalize(result);
+        })
+        .catch(err => {
+          this.loading = false;
+          api._handleError(err);
+        });
     },
     finalize(response) {
       api.mediastorage.cookies.set("name", response.data.userData.name, 5000);
@@ -173,7 +201,10 @@ export default {
       );
     },
     clear() {
-      this.$refs.form.reset();
+      this.password = "";
+      this.name = "";
+      this.email = "";
+      this.username = "";
     }
   }
 };

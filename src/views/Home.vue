@@ -1,9 +1,7 @@
 <template>
-  <div class="media-home">
-    <v-app>
-      <media-login></media-login>
-      <media-alert></media-alert>
-    </v-app>
+  <div class="media__home">
+    <media-login></media-login>
+    <media-alert></media-alert>
   </div>
 </template>
 
