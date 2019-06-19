@@ -25,8 +25,12 @@ import Alert from '@/components/Tool/Alert'
 
 import 'vuetify/dist/vuetify.min.css'
 import './styles/mediamanager.scss'
+import '@mdi/font/css/materialdesignicons.css'
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  iconfont: 'mdi'
+})
+
 Vue.use(VueAnalytics, {
   id: 'UA-131081167-1',
   router
@@ -51,9 +55,9 @@ Vue.component('media-upload-menu', UploadMenu)
 Vue.component('media-preview-model', PreviewModel)
 
 // Register MediaManager namespace
-window.LazyDrive = window.LazyDrive || {};
+window.LazyDrive = window.LazyDrive || {}
 // Register the media manager event bus
-window.LazyDrive.Event = new Event();
+window.LazyDrive.Event = new Event()
 
 Vue.config.productionTip = false
 
