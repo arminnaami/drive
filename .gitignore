@@ -2,7 +2,9 @@
 node_modules
 /dist
 /build
-/client
+/client/*
+/.cache/*
+/uploads/*
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
