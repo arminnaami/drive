@@ -4,7 +4,6 @@ var multer = require("multer");
 var fs = require("fs-extra");
 
 module.exports = function(Action) {
-  var uploadedFileName = "";
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       var dirPath = "uploads/";
@@ -22,18 +21,21 @@ module.exports = function(Action) {
   Action.upload = (req, res) => {
     var upload = multer({
       storage: storage
-    }).array("file", 12);
+    }).single("file");
 
     upload(req, res, function(err) {
       if (err) {
-        res.json(err);
+        return res.json(err);
+      } else {
+        return res.json({
+          res: "done"
+        });
       }
-      res.json(uploadedFileName);
     });
   };
 
   Action.remoteMethod("upload", {
-    description: "Uploads a file",
+    description: "Upload a file",
     accepts: [
       { arg: "req", type: "object", http: { source: "req" } },
       { arg: "res", type: "object", http: { source: "res" } }
