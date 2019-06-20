@@ -3,10 +3,10 @@
     v-model="snackbarState"
     :bottom="y === 'bottom'"
     :left="x === 'left'"
-    :multi-line="mode === 'multi-line'"
-    :right="x === 'right'"
-    :timeout="timeout"
     :top="y === 'top'"
+    :right="x === 'right'"
+    :multi-line="mode === 'multi-line'"
+    :timeout="timeout"
     :vertical="mode === 'vertical'"
     :color="this.$store.state.showsnackbar.color"
   >
@@ -22,9 +22,9 @@ export default {
   name: "Alert",
   data: () => {
     return {
-      y: "bottom",
-      x: "left",
-      mode: ""
+      y: "top",
+      x: "right",
+      mode:""
     };
   },
   props: {},
@@ -34,7 +34,6 @@ export default {
         return this.$store.state.showsnackbar.state;
       },
       set: function() {
-        // think about this
         setTimeout(
           function() {
             this.$store.commit(types.HIDE_SNACKBAR);

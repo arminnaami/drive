@@ -6,11 +6,11 @@
   "description": "A file sharing community.",
   "scripts": {
     "lint": "vue-cli-service lint",
-    "dev": "npm run lb-start & npm run vue-serve",
+    "dev": "cross-env NODE_ENV=development npm run lb-start & npm run vue-serve",
     "lb-start": "nodemon",
     "posttest": "npm run lint && nsp check",
-    "prod": "environment=production npm run vue-build && npm start",
-    "start": "node .",
+    "prod": "cross-env NODE_ENV=production npm run vue-build && npm start",
+    "start": "node . -r dotenv/config",
     "vue-build": "vue-cli-service build",
     "vue-serve": "vue-cli-service serve"
   },
@@ -54,6 +54,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
+    "cross-env": "^5.2.0",
     "cypress": "^3.1.5",
     "eslint": "^5.16.0",
     "eslint-config-loopback": "^8.0.0",
