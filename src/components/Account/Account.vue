@@ -86,8 +86,8 @@
             large
             dark
             depressed
-            @click="login"
             ripple
+            @click="login"
             color="#1ed760"
             class="sign-up"
           >LOG IN</v-btn>
