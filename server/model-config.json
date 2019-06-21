@@ -28,5 +28,9 @@
   "permission": {
     "dataSource": "mongodb",
     "public": true
+  },
+  "settings": {
+    "dataSource": "mongodb",
+    "public": true
   }
 }
