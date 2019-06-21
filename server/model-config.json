@@ -17,7 +17,19 @@
     "dataSource": "mongodb",
     "public": true
   },
+  "accessToken": {
+    "dataSource": "mongodb",
+    "public": false
+  },
   "ACL": {
+    "dataSource": "mongodb",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mongodb",
+    "public": true
+  },
+  "Role": {
     "dataSource": "mongodb",
     "public": false
   },
