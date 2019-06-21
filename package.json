@@ -6,7 +6,7 @@
   "description": "A file sharing community.",
   "scripts": {
     "lint": "vue-cli-service lint",
-    "test": "vue-cli-service lint & vue-build",
+    "test": "vue-cli-service lint & npm run vue-build",
     "dev": "cross-env NODE_ENV=development npm run lb-start & npm run vue-serve",
     "lb-start": "nodemon",
     "posttest": "npm run lint && nsp check",
