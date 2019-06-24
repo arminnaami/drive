@@ -19,6 +19,15 @@ For sample you can use [**master**](https://github.com/lazyDrive/drive/tree/mast
 
 **Lazy Drive** is an **opensource** project. Contributions are welcome
 
+**Road Map**
+1. Add Auth system
+2. Improve UI
+3. Improve Server
+4. Add redis 
+5. File Indexing
+6. Zero Knowledge Encryption
+7. Deploy
+
 - Fork the repo and star it :star:
 - Open issues :boom:
 - Raise PRs for issues :raised_hand:
