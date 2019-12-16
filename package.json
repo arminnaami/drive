@@ -1,74 +1,84 @@
 {
-  "name": "lazy-drive",
-  "version": "0.1.0",
-  "private": true,
-  "description": "<p align=\"center\"><a href=\"http://github.com/anu1601cs/\" target=\"_blank\" rel=\"noopener noreferrer\"><img width=\"100\" src=\"https://vuejs.org/images/logo.png\" alt=\"Vue logo\"></a></p>",
-  "author": "Anurag Kumar (anu1601cs)",
+  "name": "Blockchain-project",
+  "version": "1.0.0",
+  "description": "Authentication with node, express, jwt and mongodb",
+  "main": "app.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
+    "start:client": "react-scripts start",
+    "build": "react-scripts build",
+    "start:server": "node app.js",
+    "dev": "NODE_ENV=development nodemon app.js & react-scripts start",
+    "eject": "react-scripts eject",
+    "test": "react-scripts test"
   },
+  "author": "",
+  "license": "MIT",
   "dependencies": {
+    "@material-ui/core": "^4.6.0",
+    "@material-ui/icons": "^4.5.1",
     "axios": "^0.19.0",
-    "babel-polyfill": "^6.26.0",
-    "crypto-js": "^3.1.9-1",
-    "debug": "^4.1.1",
-    "dropbox": "^4.0.30",
-    "file-saver": "^2.0.2",
-    "isomorphic-fetch": "^2.2.1",
-    "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.15",
-    "material-design-icons-iconfont": "^5.0.1",
-    "register-service-worker": "^1.6.2",
+    "bcryptjs": "^2.4.3",
+    "bip39": "^3.0.2",
+    "bluebird": "^3.7.1",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "crypto": "^1.0.1",
+    "ethereumjs-tx": "^2.1.1",
+    "ethereumjs-util": "^6.2.0",
+    "ethers": "^4.0.39",
+    "express": "^4.16.3",
+    "fs-extra": "^8.1.0",
+    "guid": "0.0.12",
+    "hdkey": "^1.1.1",
+    "helmet": "^3.12.0",
+    "human-standard-token-abi": "^2.0.0",
+    "jsonwebtoken": "^8.2.1",
+    "markdown-to-jsx": "^6.10.3",
+    "md5": "^2.2.1",
+    "moment": "^2.22.0",
+    "mongoose": "^5.0.14",
+    "mongoose-unique-validator": "^2.0.0",
+    "multer": "^1.4.2",
+    "nodemailer": "^4.6.4",
+    "object-hash": "^2.0.0",
+    "path": "^0.12.7",
+    "randomstring": "^1.1.5",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "truffle": "^5.0.44",
+    "truffle-contract": "^4.0.31",
     "underscore": "^1.9.1",
-    "vue": "^2.6.8",
-    "vue-analytics": "^5.17.2",
-    "vue-pdf": "^4.0.7",
-    "vue-router": "^3.1.3",
-    "vuetify": "^2.0.0",
-    "vuex": "^3.1.1",
-    "vuex-persistedstate": "^2.5.4"
+    "url": "^0.11.0",
+    "validator": "^9.4.1",
+    "web3": "^1.2.2"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.6.2",
-    "@mdi/font": "^4.4.95",
-    "@vue/cli-plugin-babel": "^3.11.0",
-    "@vue/cli-plugin-e2e-cypress": "^3.11.0",
-    "@vue/cli-plugin-eslint": "^3.11.0",
-    "@vue/cli-plugin-pwa": "^3.11.0",
-    "@vue/cli-plugin-unit-jest": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
-    "@vue/test-utils": "^1.0.0-beta.29",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^10.0.3",
-    "babel-jest": "^24.9.0",
-    "cypress": "^3.4.1",
-    "eslint": "^6.5.1",
-    "eslint-plugin-vue": "^5.2.3",
-    "less": "^3.10.3",
-    "less-loader": "^5.0.0",
-    "node-sass": "^4.12.0",
-    "sass": "^1.17.4",
-    "sass-loader": "^7.1.0",
-    "vue-cli-plugin-vuetify": "^0.6.3",
-    "vue-template-compiler": "^2.6.10",
-    "vuetify-loader": "^1.2.2"
+    "nodemon": "^1.17.3"
   },
-  "bugs": {
-    "url": "https://github.com/lazyDrive/drive/issues"
+  "nodemonConfig": {
+    "ignore": [
+      "client/*",
+      "src/*",
+      "build/*",
+      "dist/*"
+    ],
+    "delay": "2500"
   },
-  "homepage": "https://github.com/lazyDrive/drive",
-  "keywords": [
-    "Media",
-    "Manager"
-  ],
-  "license": "ISC",
-  "main": "background.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lazyDrive/drive.git"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
